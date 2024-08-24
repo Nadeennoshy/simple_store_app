@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_store_app/widgets/categories_list_view.dart';
-import 'package:simple_store_app/widgets/product_item.dart';
+import 'package:simple_store_app/widgets/products_grid_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -33,10 +33,7 @@ class HomeView extends StatelessWidget {
               'Products',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            ProductItem()
+            Expanded(child: ProductsGridView()),
           ],
         ),
       ),

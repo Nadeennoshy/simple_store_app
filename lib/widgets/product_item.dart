@@ -6,7 +6,6 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -15,37 +14,53 @@ class ProductItem extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 5,
             blurRadius: 7,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              alignment: AlignmentDirectional.topEnd,
+      child: Stack(
+        alignment: AlignmentDirectional.topEnd,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 10, right: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset('assets/images/2.jpg'),
-                const Icon(
-                  Icons.favorite_border,
-                  color: Colors.grey,
-                )
+                Expanded(
+                  child: Image.asset(
+                    'assets/images/2.jpg',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Product Title',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                      SizedBox(height: 4.0),
+                      Text(
+                        '\$250',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-            const Text('Product Title',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                )),
-            const Text(
-              'Product description',
-              style: TextStyle(color: Colors.grey),
-            ),
-            const Text('\$250')
-          ],
-        ),
+          ),
+          const Positioned(
+              top: 5, right: 8, child: Icon(Icons.favorite_border_outlined,color: Colors.grey,)),
+        ],
       ),
     );
   }
